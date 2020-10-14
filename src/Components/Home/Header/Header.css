@@ -1,0 +1,31 @@
+.bg-yellow{
+    background-image: url(/images/bg.jpg);  
+    margin-top: -5px;
+    margin-left: 0px;
+    height: 685px;
+    width: 100%;
+}
+
+.bg-dark{
+    border-radius: 5px;
+    width: 80px;
+}
+
+.navbar-brand{
+    height: 60px;
+    width: 150px;
+}
+
+.img-fluid{
+    margin-left: 10%;
+    margin-right: 50px;
+    height: 422px;
+    width: 75%;
+}
+
+.icom{
+    height: 30px;
+    width: 100%;
+}
+    
+
