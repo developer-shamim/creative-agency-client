@@ -8,13 +8,15 @@ import Login from './Components/Login/Login';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import './App.css';
 import Home from './Components/Home/Home/Home';
-import ClientDashboard from './Components/Customer/ClientDashboard';
 import AdminDashboard from './Components/Admin/AdminDashboard';
 import Services from './Components/Home/Services/Services';
 import Footer from './Components/Home/Footer/Footer';
 import ServiceListing from './Components/Admin/ServiceListing';
 import AddService from './Components/Admin/AddService';
 import AddAdmin from './Components/Admin/AddAdmin';
+import Order from './Components/Customer/Order';
+import OrderStatus from './Components/Customer/OrderStatus';
+import AddReview from './Components/Customer/AddReview';
 
 export const UserContext = createContext();
 
@@ -54,10 +56,19 @@ function App() {
             <Route path="/make">
               <AddAdmin/>
             </Route>
+
+
+            <Route path="/status">
+              <OrderStatus/>
+            </Route>
+
+            <Route path="/review">
+              <AddReview/>
+            </Route>
             
-            <PrivateRoute path="/order">
-              <ClientDashboard/>
-            </PrivateRoute>
+            <Route path="/order">
+              <Order/>
+            </Route>
 
             <Route path="/admin">
               <AdminDashboard/>

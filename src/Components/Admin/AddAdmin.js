@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
       '& .MuiTextField-root': {
         margin: theme.spacing(1),
-        width: '25ch',
+        width: '35ch',
       },
     },
   }));
@@ -31,7 +31,8 @@ const AddAdmin = () => {
             <div>
              <AdminDashboard></AdminDashboard>
             </div>
-        <div className="create-event">
+            <div className="create-event">
+            <h5 className=" order-text">Create Admin</h5>
         <form className={classes.root} noValidate autoComplete="off">
           <div >
             <TextField

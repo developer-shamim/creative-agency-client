@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { Button } from '@material-ui/core';
@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
       '& .MuiTextField-root': {
         margin: theme.spacing(1),
-        width: '25ch',
+        width: '35ch',
       },
     },
   }));
@@ -31,8 +31,8 @@ const AddService = () => {
         <div>
              <AdminDashboard></AdminDashboard>
          </div>
-    <div className="create-event">
-      
+         <div className="create-event">
+            <h5 className=" order-text">Add Services</h5>
       <form className={classes.root} noValidate autoComplete="off">
           <div>
       <TextField
@@ -54,12 +54,13 @@ const AddService = () => {
         variant="outlined"
       />
     </div>
+    <div className="">
+        <Button variant="contained" className="ml-2" color="" onClick={handleAddEvent} > Upload Icon </Button>
+    </div>
     <div className="event-btn">
         <Button variant="contained" className="event-btn" color="primary" onClick={handleAddEvent} > Submit </Button>
     </div>
-    <div className="upload-btn">
-        <Button variant="contained" className="event-btn" color="" onClick={handleAddEvent} > Upload Icon </Button>
-    </div>
+   
       </form>
   </div>
   </div>

@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
-import './Admin.css'
+import './Admin.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faShoppingBag, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import logo from '../../images/logos/logo.png';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../App';
@@ -22,15 +24,15 @@ const AdminDashboard = () => {
                     </div>
                 <div className="left-nav">
                     <div className="vol-reg">
-                            <Link to="/listing" className="link-text">Order List</Link>
+                            <Link to="/listing" className="link-text"><FontAwesomeIcon className="client-icon" icon={faShoppingBag} />Order List</Link>
                         </div>
 
                         <div className="add-event">
-                            <Link to="/create" className="link-text">Add Services</Link>
+                            <Link to="/create" className="link-text"><FontAwesomeIcon className="client-icon" icon={faPlus} />Add Services</Link>
                         </div>
 
                         <div className="add-event">
-                            <Link to="/make" className="link-text">Make Admin</Link>
+                            <Link to="/make" className="link-text"><FontAwesomeIcon className="client-icon" icon={faUserPlus} />Make Admin</Link>
                         </div>
 
                     </div>
