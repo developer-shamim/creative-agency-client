@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Login = () => {
     const [newUser, setNewUser] = useState(false);
-    const [loggedInUser, setLoggedInUser] = useContext ( UserContext );
+    const [ setLoggedInUser] = useContext ( UserContext );
     const history = useHistory();
     const location = useLocation();
     let { from } = location.state || { from: { pathname: "/order" } };

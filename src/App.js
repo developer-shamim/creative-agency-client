@@ -66,13 +66,13 @@ function App() {
               <AddReview/>
             </Route>
             
-            <Route path="/order">
+            <PrivateRoute path="/order">
               <Order/>
-            </Route>
+            </PrivateRoute>
 
-            <Route path="/admin">
+            <PrivateRoute path="/admin">
               <AdminDashboard/>
-            </Route>
+            </PrivateRoute>
             
 
             <Route exact path="/">

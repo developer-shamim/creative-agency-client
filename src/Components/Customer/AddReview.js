@@ -1,29 +1,29 @@
-import { Button, TextField } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
+import { useForm } from 'react-hook-form';
 import ClientDashboard from './ClientDashboard';
 import './Customer.css';
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-      '& .MuiTextField-root': {
-        margin: theme.spacing(1),
-        width: '35ch',
-      },
-    },
-  }));
 
 const AddReview = () => {
-    const classes = useStyles();
     
-    const handleAddEvent = () => {
-        fetch ('http://localhost:4000/register', {
-            method:'POST',
-            headers: {'Content-Type': 'application/json'
-        },
-        body: JSON.stringify()
-        })
-    } 
+  const { register, handleSubmit, errors } = useForm();
+
+  const onSubmit = data => {
+     console.log(data)
+   fetch('https://floating-mesa-43526.herokuapp.com/addReview', {
+       method: 'POST',
+       headers: { 'content-type': 'application/json' },
+       body: JSON.stringify(data)
+   })
+   .then(res => res.json())
+   .then(success => {
+       if(success){
+           // alert('Appointment created successfully.');
+       }
+   })
+ }
+    
+   
     return (
         <div>
             <div>
@@ -31,42 +31,46 @@ const AddReview = () => {
             </div>
             <div className="create-event">
             <h5 className=" order-text">Review</h5>
-      <form className={classes.root} noValidate autoComplete="off">
-          <div>
-          <TextField
-        id="outlined-multiline-flexible"
-        label="Name"
-        multiline
-        rowsMax={4}
-        placeholder="Your Name "
-        variant="outlined"
-      />
-                  
-      <br/>
-      <TextField
-        id="outlined-multiline-flexible"
-        label="Designation"
-        multiline
-        rowsMax={4}
-        placeholder="Designation, Company's Name "
-        variant="outlined"
-      />
-                  
-      <br/>
-      <TextField
-        id="outlined-multiline-static"
-        label="Description"
-        multiline
-        rows={4}
-        placeholder="Your review"
-        variant="outlined"
-      />
-    </div>
-    <div className="event-btn">
-        <Button variant="contained" className="event-btn" color="primary" onClick={handleAddEvent} > Submit </Button>
-    </div>
-    
-      </form>
+            
+            <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="form-group">
+            <input type="text"
+              className="form-control"
+              ref={register({ required: true })} 
+              name="name"
+              placeholder="Your name"
+            />
+              {errors.name && <span className="text-danger">This field is required</span>} 
+            </div>
+
+          <br/>
+          <div className="form-group">
+              <input type="text"
+                className="form-control"
+                name="designation"
+                ref={register({ required: true })} 
+                placeholder="Company's Name and Designation"
+              />
+            {errors.name && <span className="text-danger">This field is required</span>}      
+          </div>  
+
+          <br/>
+          <div className="form-group">
+              <input type="text"
+                className="form-control"
+                name="review"
+                ref={register({ required: true })} 
+                placeholder="Description"
+                
+              />
+            {errors.name && <span className="text-danger">This field is required</span>}
+          </div>
+          <br/>
+        <div>
+            <button  type="submit" className="btn btn-dark"> Send </button>
+        </div>
+        
+          </form>
   </div>
 
             

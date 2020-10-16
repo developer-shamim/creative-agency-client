@@ -31,13 +31,13 @@
 
 .nav-container{
     display: flex;
-    width: 1350px;
+    width: 1420px;
     background-color: rgb(214, 203, 203);
     margin-right: 0px;
 }
 
 .left-nav{
-    height: 900px;
+    height: 700px;
     width: 250px;
     margin-top: -70px;
     background-color: rgb(214, 203, 203);

@@ -1,97 +1,109 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Customer.css'
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import { Button } from '@material-ui/core';
+import { useForm } from "react-hook-form";
 import ClientDashboard from './ClientDashboard';
+import { UserContext } from '../../App';
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-      '& .MuiTextField-root': {
-        margin: theme.spacing(1),
-        width: '40ch',
-      },
-    },
-  }));
 
 const Order = () => {
-   
-    const classes = useStyles();
+  const [loggedInUser ] = useContext (UserContext)
+  const { register, handleSubmit, errors } = useForm();
+
+   const onSubmit = data => {
+      console.log(data)
+    fetch('https://floating-mesa-43526.herokuapp.com/addOrder', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(data, {email: loggedInUser.email})
+    })
+    .then(res => res.json())
+    .then(success => {
+        if(success){
+            // alert('Appointment created successfully.');
+        }
+    })
+  }
     
-    const handleAddEvent = () => {
-        fetch ('http://localhost:4000/register', {
-            method:'POST',
-            headers: {'Content-Type': 'application/json'
-        },
-        body: JSON.stringify()
-        })
-    } 
     return (
         <div>
         <div>
              <ClientDashboard></ClientDashboard>
          </div>
-    <div className="create-event">
-      <h5 className=" order-text">Place Order</h5>
-      <form className={classes.root} noValidate autoComplete="off">
-          <div>
-      <TextField
-        id="outlined-multiline-flexible"
-        label="Name"
-        multiline
-        rowsMax={4}
-        placeholder="Your name / Company's name"
-        variant="outlined"
-      />
-      <br/>
-      <TextField
-        id="outlined-multiline-flexible"
-        label="Email"
-        multiline
-        rowsMax={4}
-        placeholder="Your email address"
-        variant="outlined"
-      />
-      <br/>
-      <TextField
-        id="outlined-multiline-flexible"
-        label="Service"
-        multiline
-        rowsMax={4}
-        placeholder="Graphic Design"
-        variant="outlined"
-      />
-                  
-      <br/>
-      <TextField
-        id="outlined-multiline-static"
-        label="Details"
-        multiline
-        rows={4}
-        placeholder="Project Details"
-        variant="outlined"
-      />
 
-<br/>
-      <TextField
-        id="outlined-multiline-flexible"
-        label="Price"
-        multiline
-        rowsMax={4}
-        placeholder="Price"
-        variant="outlined"
-      />
-                  
-    </div>
-    <div className="event-btn">
-        <Button variant="contained" className="event-btn" color="primary" onClick={handleAddEvent} > Send </Button>
-    </div>
-    <div className="upload-btn">
-        <Button variant="contained" className="event-btn" color="" onClick={handleAddEvent} > Upload project file </Button>
-    </div>
-      </form>
-  </div>
-  </div>
+        <div className="create-event">
+          <h5 className=" order-text">Place Order</h5>
+
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="form-group">
+            <input type="text"
+              className="form-control"
+              ref={register({ required: true })} 
+              name="name"
+              placeholder="Your name / Company's name"
+            />
+              {errors.name && <span className="text-danger">This field is required</span>} 
+            </div>
+     
+        
+          <br/>
+          <div className="form-group">
+              <input type="text"
+                className="form-control"
+                ref={register({ required: true })} 
+                name="email"
+                placeholder="Your email address"
+              />
+          {errors.name && <span className="text-danger">This field is required</span>}
+          </div>
+
+          <br/>
+          <div className="form-group">
+              <input type="text"
+                className="form-control"
+                name="service"
+                ref={register({ required: true })} 
+                placeholder="Graphic Design"
+              />
+            {errors.name && <span className="text-danger">This field is required</span>}      
+          </div>  
+
+          <br/>
+          <div className="form-group">
+              <input type="text"
+                className="form-control"
+                name="details"
+                ref={register({ required: true })} 
+                placeholder="Project Details"
+                
+              />
+            {errors.name && <span className="text-danger">This field is required</span>}
+          </div>
+          <br/>
+
+          <div className="row">
+
+            <div className="col-5">
+                <input type="text"
+                  className="form-control"
+                  name="price"
+                  placeholder="Price"
+                />
+              {errors.name && <span className="text-danger">This field is required</span>}          
+            </div>
+            
+            <div className="col-7">
+              <button type="file" className="btn btn-success"> Upload project file </button>
+          </div>
+
+          </div>
+          <br/>
+        <div>
+            <button  type="submit" className="btn btn-dark"> Send </button>
+        </div>
+        
+          </form>
+      </div>
+      </div>
 
     );
 };

@@ -8,6 +8,7 @@ import { UserContext } from '../../App';
 
 const AdminDashboard = () => {
     const [loggedInUser] = useContext (UserContext);
+    
     return (
         <div className="admin-container">
              <div className="">
@@ -24,21 +25,19 @@ const AdminDashboard = () => {
                     </div>
                 <div className="left-nav">
                     <div className="vol-reg">
-                            <Link to="/listing" className="link-text"><FontAwesomeIcon className="client-icon" icon={faShoppingBag} />Order List</Link>
-                        </div>
-
-                        <div className="add-event">
-                            <Link to="/create" className="link-text"><FontAwesomeIcon className="client-icon" icon={faPlus} />Add Services</Link>
-                        </div>
-
-                        <div className="add-event">
-                            <Link to="/make" className="link-text"><FontAwesomeIcon className="client-icon" icon={faUserPlus} />Make Admin</Link>
-                        </div>
-
+                        <Link to="/listing" className="link-text"><FontAwesomeIcon className="client-icon" icon={faShoppingBag} />Order List</Link>
                     </div>
+
+                    <div className="add-event">
+                        <Link to="/create" className="link-text"><FontAwesomeIcon className="client-icon" icon={faPlus} />Add Services</Link>
+                    </div>
+
+                    <div className="add-event">
+                        <Link to="/make" className="link-text"><FontAwesomeIcon className="client-icon" icon={faUserPlus} />Make Admin</Link>
+                    </div>
+
+                </div>
                     
-                    
-                   
                 </div>
             </div>
             

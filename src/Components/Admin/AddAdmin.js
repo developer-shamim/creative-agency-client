@@ -1,30 +1,27 @@
 
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
 import AdminDashboard from './AdminDashboard';
-import { Button } from '@material-ui/core';
+import { useForm } from 'react-hook-form';
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-      '& .MuiTextField-root': {
-        margin: theme.spacing(1),
-        width: '35ch',
-      },
-    },
-  }));
+
 
 const AddAdmin = () => {
-    const classes = useStyles();
-    
-    const handleAddEvent = () => {
-        fetch ('http://localhost:4000/register', {
-            method:'POST',
-            headers: {'Content-Type': 'application/json'
-        },
-        body: JSON.stringify()
-        })
-    } 
+    const { register, handleSubmit, errors } = useForm();
+
+  const onSubmit = data => {
+     console.log(data)
+   fetch('https://floating-mesa-43526.herokuapp.com/addAdmin', {
+       method: 'POST',
+       headers: { 'content-type': 'application/json' },
+       body: JSON.stringify(data)
+   })
+   .then(res => res.json())
+   .then(success => {
+       if(success){
+           // alert('Appointment created successfully.');
+       }
+   })
+ } 
 
     return (
         <div >
@@ -33,23 +30,22 @@ const AddAdmin = () => {
             </div>
             <div className="create-event">
             <h5 className=" order-text">Create Admin</h5>
-        <form className={classes.root} noValidate autoComplete="off">
-          <div >
-            <TextField
-                id="outlined-multiline-flexible"
-                label="Email"
-                multiline
-                rowsMax={4}
-                placeholder="Add admin's email"
-                variant="outlined"
-            />
-                        
-            <br/>
-        </div>
-            <div className="event-btn">
-                <Button variant="contained" className="event-btn" color="primary" onClick={handleAddEvent} > Submit </Button>
-            </div>
-        </form>
+
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="form-group">
+                <input type="email"
+                className="form-control"
+                ref={register({ required: true })} 
+                name="email"
+                placeholder="Admin's Email"
+                />
+                {errors.name && <span className="text-danger">This field is required</span>} 
+                </div>
+
+                <div>
+                    <button  type="submit" className="btn btn-dark"> Submit </button>
+                </div>
+          </form>
 
 
         </div>
