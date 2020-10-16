@@ -11,7 +11,7 @@ const Navbar = () => {
             </button>
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div className="navbar-nav ml-auto">
-                <Link to="/home" className="nav-link active mr-5" >Home <span class="sr-only">(current)</span></Link>
+                <Link to="/home" className="nav-link active mr-5" >Home <span className="sr-only">(current)</span></Link>
                 <Link to="/service" className="nav-link mr-5" >Our portfolio</Link>
                 <Link to="/"className="nav-link mr-5" href="/#">Our Teams</Link>
                 <Link to="/contact" className="nav-link mr-5" href="/#">Contact Us</Link>

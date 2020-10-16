@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Login = () => {
     const [newUser, setNewUser] = useState(false);
-    const [ setLoggedInUser] = useContext ( UserContext );
+    const [ loggedInUser, setLoggedInUser] = useContext ( UserContext );
     const history = useHistory();
     const location = useLocation();
     let { from } = location.state || { from: { pathname: "/order" } };
@@ -197,7 +197,7 @@ user.updateProfile({
                  <br/>
                 { <p> {newUser ? "Already" : "Don't"} <span> have an account? </span>
                 
-                    <Link onClick={()=> setNewUser(!newUser)}> {newUser ? "Log in" :  "Create an account"} </Link> </p>}
+                    <Link to="" onClick={()=> setNewUser(!newUser)}> {newUser ? "Log in" :  "Create an account"} </Link> </p>}
                     
                 
 

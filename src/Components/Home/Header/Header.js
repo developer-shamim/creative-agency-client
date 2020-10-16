@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Header.css';
 import IconClients from './IconClients';
 import Navbar from './Navbar';
@@ -15,10 +16,12 @@ const Header = () => {
                         <br/>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem ipsa eaque voluptas perspiciatis. Consequatur, cum.</p>    
                         <br/>
-                        <button className="btn btn-dark"> Hire Us </button>          
+                        <Link to="/order">
+                        <button className="btn btn-dark"> Hire Us </button> 
+                        </Link>         
                     </div>
 
-                    <div classname="col-md-6">
+                    <div className="col-md-6">
                         <img className="img-fluid" src="/images/frame.png" alt=""/>
                     </div>
 

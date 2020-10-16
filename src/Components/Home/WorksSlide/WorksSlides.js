@@ -14,7 +14,7 @@ const WorksSlides = () => {
            
             <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
                 <ol className="carousel-indicators mt-5">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                 </ol>
@@ -25,7 +25,7 @@ const WorksSlides = () => {
                     <div className="carousel-item" data-interval="2000">
                         <img src={carousel2} className="d-block w-25" alt="..."/>
                     </div>
-                    <div class="carousel-item">
+                    <div className="carousel-item">
                         <img src={carousel3} className="d-block w-25" alt="..."/>
                     </div>
                 </div>

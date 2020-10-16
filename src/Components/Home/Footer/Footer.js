@@ -11,15 +11,15 @@ const Footer = () => {
 
             <div className="col-md-6 mt-4 ml-auto">
                 <form>
-                <div class="form-group">
+                <div className="form-group">
                     <input className="form-control mt-3" type="email" placeholder="Your Email Address"/>
                 </div>
                     
-                <div class="form-group">    
+                <div className="form-group">    
                     <input className="form-control mt-4" type="text" placeholder=" Your Name / Company Name"/>
                 </div>
                 
-                <div class="form-group">   
+                <div className="form-group">   
                     <textarea className="form-control mt-4" type="text" placeholder="Your message" id="exampleFormControlTextarea1" rows="4"></textarea>
                 </div>
                 

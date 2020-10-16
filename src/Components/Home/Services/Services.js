@@ -16,7 +16,7 @@ const Services = () => {
         <div>
             <section>
                 <div className="justify-content-center mt-5">
-                     <h3 className="text-center mt-5"> Provide awesome <span class="text-success"> services </span> </h3>
+                     <h3 className="text-center mt-5"> Provide awesome <span className="text-success"> services </span> </h3>
                 </div>
             </section>
        

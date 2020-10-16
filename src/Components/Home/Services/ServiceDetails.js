@@ -13,7 +13,7 @@ const ServiceDetails = ({services}) => {
                 <img src={`data:image/png;base64,${services.image.img}`} className="card-img-top" alt="..."/>
                 <div className="card-body">
                 <Link to="/order">
-                <h5 placeOrder={services.service} className="card-title text-center">{services.service}</h5>
+                <h5 className="card-title text-center">{services.service}</h5>
                 </Link>
                 <p className="card-text text-center">{services.details}</p>
                 
